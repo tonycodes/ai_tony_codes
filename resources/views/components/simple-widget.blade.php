@@ -1,5 +1,12 @@
 {{-- Bulletproof GitFlow Reporter Widget --}}
 <style>
+/* Hide completely on mobile devices */
+@media (max-width: 768px) {
+    #gitflow-reporter-bug,
+    #gitflow-modal {
+        display: none !important;
+    }
+}
 #gitflow-reporter-bug {
     position: fixed !important;
     {{ config('gitflow-reporter.ui.position') === 'top-left' ? 'top: 16px !important; left: 16px !important;' : '' }}
@@ -284,24 +291,24 @@
         <!-- Header -->
         <div class="gitflow-header">
             <h3>
-                Send Feedback
+                Technical Support
                 <button type="button" class="gitflow-close" onclick="gitflowCloseModal()">
                     <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
                 </button>
             </h3>
-            <p>Help us improve by reporting bugs or sharing your feedback.</p>
+            <p>Report technical issues or suggest new features. For general support, please contact our support team.</p>
         </div>
         
         <!-- Form -->
         <form id="gitflow-form" onsubmit="gitflowSubmitReport(event)" class="gitflow-form">
             <div class="gitflow-form-group">
-                <label>Report Type</label>
+                <label>Request Type</label>
                 <select name="type" required>
-                    <option value="">Select report type</option>
-                    <option value="bug">🐛 Bug Report</option>
-                    <option value="feedback">💬 Feedback</option>
+                    <option value="">Select request type</option>
+                    <option value="bug">🐛 Technical Issue / Bug</option>
+                    <option value="feedback">💡 Feature Suggestion</option>
                 </select>
             </div>
             
@@ -312,7 +319,7 @@
             
             <div class="gitflow-form-group">
                 <label>Description</label>
-                <textarea name="description" placeholder="Detailed description. For bugs, please include steps to reproduce." required></textarea>
+                <textarea name="description" placeholder="For technical issues: describe the problem and steps to reproduce. For feature suggestions: explain what you'd like to see and why it would be helpful." required></textarea>
             </div>
             
             

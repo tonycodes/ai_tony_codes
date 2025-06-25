@@ -56,8 +56,8 @@ return [
             'assignees' => [],
         ],
         'feedback' => [
-            'title_prefix' => '💬',
-            'labels' => ['feedback', 'auto-generated'],
+            'title_prefix' => '💡',
+            'labels' => ['feature-request', 'auto-generated'],
             'assignees' => [],
         ],
     ],
