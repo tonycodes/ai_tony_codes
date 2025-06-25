@@ -1,5 +1,5 @@
 {
-    "name": "tonycodes/gitflow-reporter",
+    "name": "tonycodes/ai_tony_codes",
     "description": "Premium Laravel package for automated GitHub issue reporting with rich context and screenshots",
     "keywords": ["laravel", "github", "error-reporting", "issue-tracker", "bug-reporter", "premium", "feedback", "screenshots"],
     "homepage": "https://tonycodes.com/gitflow-reporter",
@@ -16,8 +16,8 @@
     "support": {
         "email": "support@tonycodes.com",
         "docs": "https://docs.tonycodes.com/gitflow-reporter",
-        "issues": "https://github.com/tonycodes/gitflow-reporter/issues",
-        "source": "https://github.com/tonycodes/gitflow-reporter"
+        "issues": "https://github.com/tonycodes/ai_tony_codes/issues",
+        "source": "https://github.com/tonycodes/ai_tony_codes"
     },
     "funding": [
         {
