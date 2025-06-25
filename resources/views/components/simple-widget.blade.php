@@ -7,24 +7,32 @@
     {{ config('gitflow-reporter.ui.position') === 'bottom-left' ? 'bottom: 24px !important; left: 24px !important;' : '' }}
     {{ config('gitflow-reporter.ui.position', 'bottom-right') === 'bottom-right' ? 'bottom: 24px !important; right: 24px !important;' : '' }}
     z-index: 999999 !important;
-    background: #2563eb !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
     color: white !important;
     border: none !important;
-    border-radius: 50px !important;
-    width: 60px !important;
-    height: 60px !important;
+    border-radius: 16px !important;
+    width: 64px !important;
+    height: 64px !important;
     cursor: pointer !important;
-    font-size: 24px !important;
+    font-size: 28px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
-    transition: all 0.2s !important;
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 2px solid rgba(255, 255, 255, 0.1) !important;
 }
 
 #gitflow-reporter-simple:hover {
-    background: #1d4ed8 !important;
-    transform: scale(1.1) !important;
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%) !important;
+    transform: scale(1.05) translateY(-2px) !important;
+    box-shadow: 0 12px 40px rgba(102, 126, 234, 0.6) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+#gitflow-reporter-simple:active {
+    transform: scale(0.98) !important;
 }
 
 .gitflow-modal {
@@ -33,70 +41,91 @@
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
-    background: rgba(0,0,0,0.5) !important;
+    background: rgba(0, 0, 0, 0.9) !important;
     z-index: 999998 !important;
     display: none !important;
     align-items: center !important;
     justify-content: center !important;
     padding: 20px !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    opacity: 0 !important;
 }
 
 .gitflow-modal.show {
     display: flex !important;
+    opacity: 1 !important;
+    animation: modalFadeIn 0.3s ease-out !important;
 }
 
 .gitflow-modal-content {
-    background: white !important;
-    border-radius: 8px !important;
+    background: #1f2937 !important;
+    border-radius: 16px !important;
     padding: 0 !important;
     max-width: 512px !important;
     width: 100% !important;
     max-height: 90vh !important;
     overflow-y: auto !important;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    transform: scale(0.95) !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.gitflow-modal.show .gitflow-modal-content {
+    transform: scale(1) !important;
 }
 
 .gitflow-header {
     padding: 24px !important;
-    border-bottom: 1px solid #e5e7eb !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%) !important;
 }
 
 .gitflow-header h3 {
     margin: 0 0 4px 0 !important;
-    font-size: 18px !important;
+    font-size: 20px !important;
     font-weight: 600 !important;
-    color: #111827 !important;
+    color: #f9fafb !important;
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
 }
 
 .gitflow-header p {
     margin: 0 !important;
     font-size: 14px !important;
-    color: #6b7280 !important;
+    color: #d1d5db !important;
 }
 
 .gitflow-close {
-    background: none !important;
+    background: rgba(255, 255, 255, 0.1) !important;
     border: none !important;
-    color: #9ca3af !important;
+    color: #d1d5db !important;
     cursor: pointer !important;
-    padding: 0 !important;
-    width: 24px !important;
-    height: 24px !important;
+    padding: 8px !important;
+    width: 32px !important;
+    height: 32px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    border-radius: 4px !important;
+    border-radius: 8px !important;
+    transition: all 0.2s !important;
 }
 
 .gitflow-close:hover {
-    color: #6b7280 !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: #f9fafb !important;
+    transform: scale(1.05) !important;
 }
 
 .gitflow-form {
     padding: 24px !important;
+    background: #1f2937 !important;
 }
 
 .gitflow-form-group {
@@ -108,27 +137,37 @@
     margin-bottom: 8px !important;
     font-size: 14px !important;
     font-weight: 500 !important;
-    color: #374151 !important;
+    color: #f3f4f6 !important;
 }
 
 .gitflow-form-group input,
 .gitflow-form-group select,
 .gitflow-form-group textarea {
     width: 100% !important;
-    padding: 8px 12px !important;
-    border: 1px solid #d1d5db !important;
-    border-radius: 6px !important;
+    padding: 12px 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
     font-size: 14px !important;
     line-height: 1.5 !important;
     box-sizing: border-box !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    color: #f9fafb !important;
+    backdrop-filter: blur(10px) !important;
+    transition: all 0.2s !important;
+}
+
+.gitflow-form-group input::placeholder,
+.gitflow-form-group textarea::placeholder {
+    color: #9ca3af !important;
 }
 
 .gitflow-form-group input:focus,
 .gitflow-form-group select:focus,
 .gitflow-form-group textarea:focus {
     outline: none !important;
-    border-color: #2563eb !important;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3) !important;
+    background: rgba(0, 0, 0, 0.4) !important;
 }
 
 .gitflow-form-group textarea {
@@ -137,35 +176,52 @@
 }
 
 .gitflow-context {
-    background: #f9fafb !important;
-    border-radius: 6px !important;
-    padding: 12px !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    border-radius: 8px !important;
+    padding: 16px !important;
     margin-bottom: 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
 }
 
 .gitflow-context h4 {
-    margin: 0 0 8px 0 !important;
+    margin: 0 0 12px 0 !important;
     font-size: 14px !important;
     font-weight: 500 !important;
-    color: #374151 !important;
+    color: #f3f4f6 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.gitflow-context h4::before {
+    content: '🔍' !important;
+    font-size: 12px !important;
 }
 
 .gitflow-context-item {
     font-size: 12px !important;
-    color: #6b7280 !important;
-    margin-bottom: 4px !important;
+    color: #d1d5db !important;
+    margin-bottom: 6px !important;
+    padding: 4px 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
 .gitflow-context-item:last-child {
     margin-bottom: 0 !important;
+    border-bottom: none !important;
 }
 
 .gitflow-buttons {
     display: flex !important;
     gap: 12px !important;
     justify-content: flex-end !important;
-    padding-top: 16px !important;
-    border-top: 1px solid #e5e7eb !important;
+    padding-top: 20px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+    margin: 20px -24px -24px -24px !important;
+    padding: 20px 24px !important;
+    border-radius: 0 0 16px 16px !important;
 }
 
 .gitflow-btn {
@@ -179,30 +235,37 @@
 }
 
 .gitflow-btn-primary {
-    background: #2563eb !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
     color: white !important;
-    border-color: #2563eb !important;
+    border-color: transparent !important;
+    box-shadow: 0 4px 14px 0 rgba(102, 126, 234, 0.39) !important;
 }
 
 .gitflow-btn-primary:hover {
-    background: #1d4ed8 !important;
-    border-color: #1d4ed8 !important;
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 20px 0 rgba(102, 126, 234, 0.5) !important;
 }
 
 .gitflow-btn-primary:disabled {
-    background: #9ca3af !important;
-    border-color: #9ca3af !important;
+    background: rgba(156, 163, 175, 0.5) !important;
+    border-color: transparent !important;
     cursor: not-allowed !important;
+    transform: none !important;
+    box-shadow: none !important;
 }
 
 .gitflow-btn-secondary {
-    background: white !important;
-    color: #374151 !important;
-    border-color: #d1d5db !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #f3f4f6 !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
 }
 
 .gitflow-btn-secondary:hover {
-    background: #f9fafb !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    transform: translateY(-1px) !important;
 }
 </style>
 
@@ -404,6 +467,10 @@ style.textContent = `
     @keyframes slideOut {
         from { transform: translateX(0); opacity: 1; }
         to { transform: translateX(100%); opacity: 0; }
+    }
+    @keyframes modalFadeIn {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
     }
 `;
 document.head.appendChild(style);
