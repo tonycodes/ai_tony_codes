@@ -66,9 +66,9 @@ class GitFlowReporterController extends Controller
             $validated = $validator->validated();
             
             // Handle screenshot upload if present
-            $screenshotUrl = null;
+            $screenshotPath = null;
             if ($request->hasFile('screenshot') && config('gitflow-reporter.features.screenshots', true)) {
-                $screenshotUrl = $this->handleScreenshotUpload($request->file('screenshot'));
+                $screenshotPath = $this->handleScreenshotUpload($request->file('screenshot'));
             }
 
             // Prepare issue data
@@ -79,7 +79,7 @@ class GitFlowReporterController extends Controller
                 'priority' => $validated['priority'] ?? 'medium',
                 'user' => auth()->user(),
                 'context' => $this->sanitizeContext(json_decode($validated['context'] ?? '{}', true)),
-                'screenshot_url' => $screenshotUrl,
+                'screenshot_path' => $screenshotPath,
                 'app_info' => $this->collectAppInfo()
             ];
 
@@ -140,9 +140,9 @@ class GitFlowReporterController extends Controller
     protected function handleScreenshotUpload($file): ?string
     {
         try {
-            $filename = 'gitflow-reporter/' . uniqid() . '_' . time() . '.png';
-            $path = $file->storeAs('gitflow-reporter', basename($filename), 'public');
-            return Storage::disk('public')->url($path);
+            $filename = uniqid() . '_' . time() . '.png';
+            $path = $file->storeAs('gitflow-reporter', $filename, 'local');
+            return storage_path('app/gitflow-reporter/' . $filename);
         } catch (\Exception $e) {
             Log::warning('GitFlow Reporter: Screenshot upload failed', [
                 'error' => $e->getMessage()

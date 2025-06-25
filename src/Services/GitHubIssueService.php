@@ -27,8 +27,14 @@ class GitHubIssueService
             throw new \Exception('GitHub configuration is incomplete');
         }
 
+        // Upload screenshot to GitHub if present
+        $githubScreenshotUrl = null;
+        if (!empty($issueData['screenshot_path'])) {
+            $githubScreenshotUrl = $this->uploadScreenshotToGitHub($issueData['screenshot_path'], $token, $owner, $repo);
+        }
+
         $title = $this->formatTitle($issueData);
-        $body = $this->formatBody($issueData);
+        $body = $this->formatBody($issueData, $githubScreenshotUrl);
         $labels = $this->getLabels($issueData);
 
         $payload = [
@@ -86,7 +92,7 @@ class GitHubIssueService
     /**
      * Format the issue body
      */
-    protected function formatBody(array $issueData): string
+    protected function formatBody(array $issueData, ?string $githubScreenshotUrl = null): string
     {
         $user = $issueData['user'];
         $context = $issueData['context'] ?? [];
@@ -136,9 +142,9 @@ class GitHubIssueService
         $body .= "\n";
 
         // Add screenshot if available
-        if (!empty($issueData['screenshot_url'])) {
+        if (!empty($githubScreenshotUrl)) {
             $body .= "## Screenshot\n\n";
-            $body .= "![Screenshot]({$issueData['screenshot_url']})\n\n";
+            $body .= "![Screenshot]({$githubScreenshotUrl})\n\n";
         }
 
         // Add browser storage data if available (limited)
@@ -196,5 +202,55 @@ class GitHubIssueService
         }
 
         return array_unique($labels);
+    }
+
+    /**
+     * Upload screenshot to GitHub repository
+     */
+    protected function uploadScreenshotToGitHub(string $filePath, string $token, string $owner, string $repo): ?string
+    {
+        try {
+            if (!file_exists($filePath)) {
+                Log::warning('GitFlow Reporter: Screenshot file not found', ['path' => $filePath]);
+                return null;
+            }
+
+            $fileContent = file_get_contents($filePath);
+            $base64Content = base64_encode($fileContent);
+            $fileName = 'screenshots/' . uniqid() . '_' . time() . '.png';
+            
+            $payload = [
+                'message' => 'Add screenshot for GitFlow Reporter issue',
+                'content' => $base64Content,
+                'branch' => 'main' // or 'master' depending on your default branch
+            ];
+
+            $response = Http::withHeaders([
+                'Authorization' => 'token ' . $token,
+                'Accept' => 'application/vnd.github.v3+json',
+                'User-Agent' => 'GitFlow-Reporter-v1.0'
+            ])->put("https://api.github.com/repos/{$owner}/{$repo}/contents/{$fileName}", $payload);
+
+            if ($response->successful()) {
+                $responseData = $response->json();
+                // Clean up local file
+                @unlink($filePath);
+                
+                // Return the raw content URL
+                return $responseData['content']['download_url'] ?? null;
+            } else {
+                Log::error('GitFlow Reporter: Failed to upload screenshot to GitHub', [
+                    'status' => $response->status(),
+                    'response' => $response->body()
+                ]);
+                return null;
+            }
+        } catch (\Exception $e) {
+            Log::error('GitFlow Reporter: Screenshot upload exception', [
+                'error' => $e->getMessage(),
+                'file_path' => $filePath
+            ]);
+            return null;
+        }
     }
 }

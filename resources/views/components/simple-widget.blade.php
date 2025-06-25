@@ -317,6 +317,13 @@
                 <textarea name="description" placeholder="Detailed description. For bugs, please include steps to reproduce." required></textarea>
             </div>
             
+            <div class="gitflow-form-group">
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                    <input type="checkbox" id="include-screenshot" style="margin-right: 8px;">
+                    Include screenshot of current page
+                </label>
+            </div>
+            
             <!-- Context Preview -->
             <div class="gitflow-context">
                 <h4>Context (automatically included)</h4>
@@ -387,6 +394,20 @@ async function gitflowSubmitReport(event) {
     // Add priority
     formData.append('priority', 'medium');
     
+    // Capture screenshot if requested
+    const includeScreenshot = document.getElementById('include-screenshot').checked;
+    if (includeScreenshot) {
+        try {
+            const screenshot = await captureScreenshot();
+            if (screenshot) {
+                const blob = dataURLtoBlob(screenshot);
+                formData.append('screenshot', blob, 'screenshot.png');
+            }
+        } catch (error) {
+            console.warn('Screenshot capture failed:', error);
+        }
+    }
+    
     try {
         // Get CSRF token
         const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
@@ -446,6 +467,41 @@ function gitflowShowNotification(message, type) {
             }
         }, 300);
     }, 5000);
+}
+
+// Screenshot capture functions
+async function captureScreenshot() {
+    try {
+        // Try to use html2canvas if available
+        if (typeof html2canvas !== 'undefined') {
+            const canvas = await html2canvas(document.body, {
+                height: window.innerHeight,
+                width: window.innerWidth,
+                scrollX: 0,
+                scrollY: 0,
+                scale: 0.5 // Reduce file size
+            });
+            return canvas.toDataURL('image/png');
+        } else {
+            console.warn('html2canvas not available for screenshot capture');
+            return null;
+        }
+    } catch (error) {
+        console.error('Screenshot capture failed:', error);
+        return null;
+    }
+}
+
+function dataURLtoBlob(dataURL) {
+    const arr = dataURL.split(',');
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], { type: mime });
 }
 
 // ESC key to close modal
