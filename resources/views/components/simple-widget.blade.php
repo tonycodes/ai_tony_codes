@@ -1,55 +1,40 @@
 {{-- Bulletproof GitFlow Reporter Widget --}}
 <style>
-#gitflow-reporter-triangle {
+#gitflow-reporter-bug {
     position: fixed !important;
-    {{ config('gitflow-reporter.ui.position') === 'top-left' ? 'top: 0 !important; left: 0 !important;' : '' }}
-    {{ config('gitflow-reporter.ui.position') === 'top-right' ? 'top: 0 !important; right: 0 !important;' : '' }}
-    {{ config('gitflow-reporter.ui.position') === 'bottom-left' ? 'bottom: 0 !important; left: 0 !important;' : '' }}
-    {{ config('gitflow-reporter.ui.position', 'bottom-right') === 'bottom-right' ? 'bottom: 0 !important; right: 0 !important;' : '' }}
+    {{ config('gitflow-reporter.ui.position') === 'top-left' ? 'top: 16px !important; left: 16px !important;' : '' }}
+    {{ config('gitflow-reporter.ui.position') === 'top-right' ? 'top: 16px !important; right: 16px !important;' : '' }}
+    {{ config('gitflow-reporter.ui.position') === 'bottom-left' ? 'bottom: 16px !important; left: 16px !important;' : '' }}
+    {{ config('gitflow-reporter.ui.position', 'bottom-right') === 'bottom-right' ? 'bottom: 16px !important; right: 16px !important;' : '' }}
     z-index: 999999 !important;
-    width: 0 !important;
-    height: 0 !important;
-    border-style: solid !important;
-    cursor: pointer !important;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    {{ config('gitflow-reporter.ui.position') === 'top-left' ? 'border-width: 60px 60px 0 0 !important; border-color: rgba(102, 126, 234, 0.3) transparent transparent transparent !important; transform: translate(-45px, -45px) !important;' : '' }}
-    {{ config('gitflow-reporter.ui.position') === 'top-right' ? 'border-width: 0 60px 60px 0 !important; border-color: transparent rgba(102, 126, 234, 0.3) transparent transparent !important; transform: translate(45px, -45px) !important;' : '' }}
-    {{ config('gitflow-reporter.ui.position') === 'bottom-left' ? 'border-width: 0 0 60px 60px !important; border-color: transparent transparent rgba(102, 126, 234, 0.3) transparent !important; transform: translate(-45px, 45px) !important;' : '' }}
-    {{ config('gitflow-reporter.ui.position', 'bottom-right') === 'bottom-right' ? 'border-width: 0 0 60px 60px !important; border-color: transparent transparent rgba(102, 126, 234, 0.3) transparent !important; transform: translate(45px, 45px) !important;' : '' }}
-}
-
-#gitflow-reporter-triangle:hover {
-    {{ config('gitflow-reporter.ui.position') === 'top-left' ? 'border-color: rgba(102, 126, 234, 0.9) transparent transparent transparent !important; transform: translate(-15px, -15px) !important;' : '' }}
-    {{ config('gitflow-reporter.ui.position') === 'top-right' ? 'border-color: transparent rgba(102, 126, 234, 0.9) transparent transparent !important; transform: translate(15px, -15px) !important;' : '' }}
-    {{ config('gitflow-reporter.ui.position') === 'bottom-left' ? 'border-color: transparent transparent rgba(102, 126, 234, 0.9) transparent !important; transform: translate(-15px, 15px) !important;' : '' }}
-    {{ config('gitflow-reporter.ui.position', 'bottom-right') === 'bottom-right' ? 'border-color: transparent transparent rgba(102, 126, 234, 0.9) transparent !important; transform: translate(15px, 15px) !important;' : '' }}
-    box-shadow: 0 0 30px rgba(102, 126, 234, 0.8) !important;
-}
-
-#gitflow-reporter-triangle::after {
-    content: '🐛' !important;
-    position: absolute !important;
-    font-size: 14px !important;
-    {{ config('gitflow-reporter.ui.position') === 'top-left' ? 'top: -30px !important; left: -30px !important;' : '' }}
-    {{ config('gitflow-reporter.ui.position') === 'top-right' ? 'top: -30px !important; right: -30px !important;' : '' }}
-    {{ config('gitflow-reporter.ui.position') === 'bottom-left' ? 'bottom: -30px !important; left: -30px !important;' : '' }}
-    {{ config('gitflow-reporter.ui.position', 'bottom-right') === 'bottom-right' ? 'bottom: -30px !important; right: -30px !important;' : '' }}
-    opacity: 0 !important;
-    transition: opacity 0.3s ease !important;
-    pointer-events: none !important;
-    z-index: 1000000 !important;
-    width: 20px !important;
-    height: 20px !important;
+    width: 48px !important;
+    height: 48px !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border-radius: 12px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    background: rgba(0, 0, 0, 0.8) !important;
-    border-radius: 4px !important;
+    font-size: 24px !important;
+    color: white !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
     backdrop-filter: blur(10px) !important;
+    opacity: 0 !important;
+    transform: scale(0.8) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-#gitflow-reporter-triangle:hover::after {
+#gitflow-reporter-hover-area:hover + #gitflow-reporter-bug {
     opacity: 1 !important;
+    transform: scale(1) !important;
+}
+
+#gitflow-reporter-bug:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%) !important;
+    transform: scale(1.05) !important;
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
 /* Hover detection area */
@@ -305,10 +290,10 @@
 @if(!app()->environment(['production', 'prod']) || config('gitflow-reporter.ui.show_in_development'))
 
 <!-- Hover detection area -->
-<div id="gitflow-reporter-hover-area" onclick="gitflowOpenModal()"></div>
+<div id="gitflow-reporter-hover-area"></div>
 
-<!-- Triangle button -->
-<div id="gitflow-reporter-triangle" onclick="gitflowOpenModal()"></div>
+<!-- Bug button -->
+<div id="gitflow-reporter-bug" onclick="gitflowOpenModal()">🐛</div>
 
 <div id="gitflow-modal" class="gitflow-modal" onclick="gitflowCloseModal()">
     <div class="gitflow-modal-content" onclick="event.stopPropagation()">
