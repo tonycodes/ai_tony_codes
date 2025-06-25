@@ -317,12 +317,6 @@
                 <textarea name="description" placeholder="Detailed description. For bugs, please include steps to reproduce." required></textarea>
             </div>
             
-            <div class="gitflow-form-group">
-                <label style="display: flex; align-items: center; cursor: pointer;">
-                    <input type="checkbox" id="include-screenshot" style="margin-right: 8px;">
-                    Include screenshot of current page
-                </label>
-            </div>
             
             <!-- Context Preview -->
             <div class="gitflow-context">
@@ -330,6 +324,7 @@
                 <div class="gitflow-context-item">User: {{ auth()->user()->name }}</div>
                 <div class="gitflow-context-item">Page: <span id="current-path"></span></div>
                 <div class="gitflow-context-item">Browser: <span id="browser-info"></span></div>
+                <div class="gitflow-context-item">Screenshot: Current page capture</div>
                 <div class="gitflow-context-item">Timestamp: <span id="timestamp"></span></div>
             </div>
             
@@ -394,18 +389,15 @@ async function gitflowSubmitReport(event) {
     // Add priority
     formData.append('priority', 'medium');
     
-    // Capture screenshot if requested
-    const includeScreenshot = document.getElementById('include-screenshot').checked;
-    if (includeScreenshot) {
-        try {
-            const screenshot = await captureScreenshot();
-            if (screenshot) {
-                const blob = dataURLtoBlob(screenshot);
-                formData.append('screenshot', blob, 'screenshot.png');
-            }
-        } catch (error) {
-            console.warn('Screenshot capture failed:', error);
+    // Always capture screenshot
+    try {
+        const screenshot = await captureScreenshot();
+        if (screenshot) {
+            const blob = dataURLtoBlob(screenshot);
+            formData.append('screenshot', blob, 'screenshot.png');
         }
+    } catch (error) {
+        console.warn('Screenshot capture failed:', error);
     }
     
     try {
