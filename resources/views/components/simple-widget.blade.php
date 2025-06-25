@@ -29,14 +29,23 @@
 #gitflow-reporter-triangle::after {
     content: '🐛' !important;
     position: absolute !important;
-    font-size: 16px !important;
-    {{ config('gitflow-reporter.ui.position') === 'top-left' ? 'top: 10px !important; left: 10px !important;' : '' }}
-    {{ config('gitflow-reporter.ui.position') === 'top-right' ? 'top: 10px !important; right: 10px !important;' : '' }}
-    {{ config('gitflow-reporter.ui.position') === 'bottom-left' ? 'bottom: 10px !important; left: 10px !important;' : '' }}
-    {{ config('gitflow-reporter.ui.position', 'bottom-right') === 'bottom-right' ? 'bottom: 10px !important; right: 10px !important;' : '' }}
+    font-size: 14px !important;
+    {{ config('gitflow-reporter.ui.position') === 'top-left' ? 'top: -30px !important; left: -30px !important;' : '' }}
+    {{ config('gitflow-reporter.ui.position') === 'top-right' ? 'top: -30px !important; right: -30px !important;' : '' }}
+    {{ config('gitflow-reporter.ui.position') === 'bottom-left' ? 'bottom: -30px !important; left: -30px !important;' : '' }}
+    {{ config('gitflow-reporter.ui.position', 'bottom-right') === 'bottom-right' ? 'bottom: -30px !important; right: -30px !important;' : '' }}
     opacity: 0 !important;
     transition: opacity 0.3s ease !important;
     pointer-events: none !important;
+    z-index: 1000000 !important;
+    width: 20px !important;
+    height: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    border-radius: 4px !important;
+    backdrop-filter: blur(10px) !important;
 }
 
 #gitflow-reporter-triangle:hover::after {
