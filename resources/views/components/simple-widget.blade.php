@@ -285,27 +285,27 @@
 <div id="gitflow-reporter-bug" onclick="gitflowOpenModal()">
     <svg width="24" height="24" viewBox="0 0 512 512" fill="none">
         <!-- Bug body -->
-        <ellipse cx="256" cy="330" rx="128" ry="140" fill="#FF9F00"/>
-        <ellipse cx="256" cy="330" rx="96" ry="105" fill="#FF8C00"/>
+        <ellipse cx="256" cy="330" rx="128" ry="140" fill="#FF4444"/>
+        <ellipse cx="256" cy="330" rx="96" ry="105" fill="#FF6666"/>
         
         <!-- Bug head -->
-        <circle cx="256" cy="120" r="85" fill="#4A4A4A"/>
-        <circle cx="256" cy="120" r="65" fill="#333333"/>
+        <circle cx="256" cy="120" r="85" fill="#FFFFFF"/>
+        <circle cx="256" cy="120" r="65" fill="#F0F0F0"/>
         
         <!-- Antennae -->
-        <ellipse cx="220" cy="45" rx="20" ry="35" fill="#333333" transform="rotate(-15 220 45)"/>
-        <ellipse cx="292" cy="45" rx="20" ry="35" fill="#333333" transform="rotate(15 292 45)"/>
+        <ellipse cx="220" cy="45" rx="20" ry="35" fill="#FFFFFF" transform="rotate(-15 220 45)"/>
+        <ellipse cx="292" cy="45" rx="20" ry="35" fill="#FFFFFF" transform="rotate(15 292 45)"/>
         
         <!-- Bug legs -->
-        <rect x="40" y="130" width="60" height="20" fill="#333333" transform="rotate(-30 70 140)"/>
-        <rect x="412" y="130" width="60" height="20" fill="#333333" transform="rotate(30 442 140)"/>
-        <rect x="30" y="200" width="80" height="20" fill="#333333" transform="rotate(-15 70 210)"/>
-        <rect x="402" y="200" width="80" height="20" fill="#333333" transform="rotate(15 442 210)"/>
-        <rect x="20" y="280" width="70" height="20" fill="#333333" transform="rotate(15 55 290)"/>
-        <rect x="422" y="280" width="70" height="20" fill="#333333" transform="rotate(-15 457 290)"/>
+        <rect x="40" y="130" width="60" height="20" fill="#FFFFFF" transform="rotate(-30 70 140)"/>
+        <rect x="412" y="130" width="60" height="20" fill="#FFFFFF" transform="rotate(30 442 140)"/>
+        <rect x="30" y="200" width="80" height="20" fill="#FFFFFF" transform="rotate(-15 70 210)"/>
+        <rect x="402" y="200" width="80" height="20" fill="#FFFFFF" transform="rotate(15 442 210)"/>
+        <rect x="20" y="280" width="70" height="20" fill="#FFFFFF" transform="rotate(15 55 290)"/>
+        <rect x="422" y="280" width="70" height="20" fill="#FFFFFF" transform="rotate(-15 457 290)"/>
         
         <!-- Shadow/depth on body -->
-        <ellipse cx="286" cy="340" rx="50" ry="60" fill="#E67E00" opacity="0.6"/>
+        <ellipse cx="286" cy="340" rx="50" ry="60" fill="#DD3333" opacity="0.8"/>
     </svg>
 </div>
 
