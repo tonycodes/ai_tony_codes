@@ -54,6 +54,9 @@ class GitFlowReporterServiceProvider extends ServiceProvider
         // Load views
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'gitflow-reporter');
 
+        // Register view composer for widget position
+        $this->registerViewComposer();
+
         // Load routes
         $this->loadRoutesFrom(__DIR__.'/routes.php');
 
@@ -91,5 +94,25 @@ class GitFlowReporterServiceProvider extends ServiceProvider
                 throw new \Exception('GitFlow Reporter: Invalid or expired license. Please contact support.');
             }
         }
+    }
+
+    /**
+     * Register view composer for widget position
+     */
+    protected function registerViewComposer(): void
+    {
+        $this->app['view']->composer('gitflow-reporter::components.widget', function ($view) {
+            $position = config('gitflow-reporter.ui.position', 'bottom-right');
+            
+            // Map position values to Tailwind classes
+            $positionMap = [
+                'bottom-right' => 'bottom-6 right-6',
+                'bottom-left' => 'bottom-6 left-6',
+                'top-right' => 'top-6 right-6',
+                'top-left' => 'top-6 left-6',
+            ];
+            
+            $view->with('position', $positionMap[$position] ?? 'bottom-6 right-6');
+        });
     }
 }
