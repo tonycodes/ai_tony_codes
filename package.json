@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "npm run watch",
+    "watch": "tailwindcss -i ./resources/css/gitflow-reporter.css -o ./resources/assets/gitflow-reporter.css --watch",
+    "build": "tailwindcss -i ./resources/css/gitflow-reporter.css -o ./resources/assets/gitflow-reporter.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

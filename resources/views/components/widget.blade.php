@@ -1,16 +1,17 @@
 {{-- GitFlow Reporter Widget --}}
+<link rel="stylesheet" href="{{ asset('vendor/gitflow-reporter/gitflow-reporter.css') }}">
 @if(config('gitflow-reporter.ui.show_in_development') || !app()->environment('local'))
 @auth
 <div id="gitflow-reporter-widget" 
      x-data="gitflowReporter()" 
      x-init="init()"
-     class="fixed z-50 {{ $position ?? 'bottom-6 right-6' }}">
+     class="gfr-fixed gfr-z-50 {{ $position ?? 'gfr-bottom-6 gfr-right-6' }}">
     
     {{-- Trigger Button --}}
     <button @click="toggleWidget()" 
-            class="gitflow-reporter-trigger bg-blue-600 hover:bg-blue-700 text-white rounded-full p-3 shadow-lg transition-all duration-200 hover:scale-110"
+            class="gitflow-reporter-trigger gfr-bg-blue-600 hover:gfr-bg-blue-700 gfr-text-white gfr-rounded-full gfr-p-3 gfr-shadow-lg gfr-transition-all gfr-duration-200 hover:gfr-scale-110"
             title="Report an issue">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="gfr-w-6 gfr-h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
                   d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
         </svg>
@@ -25,10 +26,10 @@
          x-transition:leave="transition ease-in duration-200"
          x-transition:leave-start="opacity-100"
          x-transition:leave-end="opacity-0"
-         class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4"
+         class="gfr-fixed gfr-inset-0 gfr-bg-black gfr-bg-opacity-50 gfr-flex gfr-items-center gfr-justify-center gfr-p-4"
          @click.self="closeModal()">
         
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto"
+        <div class="gfr-bg-white gfr-rounded-lg gfr-shadow-xl gfr-max-w-lg gfr-w-full gfr-max-h-[90vh] gfr-overflow-y-auto"
              @click.stop>
             
             {{-- Header --}}
@@ -39,7 +40,7 @@
                     </h3>
                     <button @click="closeModal()" 
                             class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="gfr-w-6 gfr-h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
                     </button>

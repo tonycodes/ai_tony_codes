@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom GitFlow Reporter styles */
+#gitflow-reporter-widget {
+  @apply gfr-font-sans;
+}
+
+#gitflow-reporter-widget * {
+  @apply gfr-box-border;
+}
+
+/* Ensure position classes are included */
+.gfr-top-6 { top: 1.5rem; }
+.gfr-left-6 { left: 1.5rem; }

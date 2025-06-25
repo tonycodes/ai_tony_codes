@@ -104,15 +104,15 @@ class GitFlowReporterServiceProvider extends ServiceProvider
         $this->app['view']->composer('gitflow-reporter::components.widget', function ($view) {
             $position = config('gitflow-reporter.ui.position', 'bottom-right');
             
-            // Map position values to Tailwind classes
+            // Map position values to prefixed Tailwind classes
             $positionMap = [
-                'bottom-right' => 'bottom-6 right-6',
-                'bottom-left' => 'bottom-6 left-6',
-                'top-right' => 'top-6 right-6',
-                'top-left' => 'top-6 left-6',
+                'bottom-right' => 'gfr-bottom-6 gfr-right-6',
+                'bottom-left' => 'gfr-bottom-6 gfr-left-6',
+                'top-right' => 'gfr-top-6 gfr-right-6',
+                'top-left' => 'gfr-top-6 gfr-left-6',
             ];
             
-            $view->with('position', $positionMap[$position] ?? 'bottom-6 right-6');
+            $view->with('position', $positionMap[$position] ?? 'gfr-bottom-6 gfr-right-6');
         });
     }
 }
