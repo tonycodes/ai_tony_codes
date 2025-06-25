@@ -14,18 +14,16 @@
     {{ config('gitflow-reporter.ui.position') === 'bottom-left' ? 'bottom: 16px !important; left: 16px !important;' : '' }}
     {{ config('gitflow-reporter.ui.position', 'bottom-right') === 'bottom-right' ? 'bottom: 16px !important; right: 16px !important;' : '' }}
     z-index: 999999 !important;
-    width: 48px !important;
-    height: 48px !important;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    width: 44px !important;
+    height: 44px !important;
+    background: rgba(255, 255, 255, 0.9) !important;
     border-radius: 12px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 24px !important;
-    color: white !important;
     cursor: pointer !important;
-    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4) !important;
-    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
     backdrop-filter: blur(10px) !important;
     opacity: 0 !important;
     transform: scale(0.8) !important;
@@ -38,10 +36,10 @@
 }
 
 #gitflow-reporter-bug:hover {
-    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%) !important;
+    background: rgba(255, 255, 255, 1) !important;
     transform: scale(1.05) !important;
-    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6) !important;
-    border-color: rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2) !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
 }
 
 
@@ -284,7 +282,32 @@
 @if(!app()->environment(['production', 'prod']) || config('gitflow-reporter.ui.show_in_development'))
 
 <!-- Bug button -->
-<div id="gitflow-reporter-bug" onclick="gitflowOpenModal()">🐛</div>
+<div id="gitflow-reporter-bug" onclick="gitflowOpenModal()">
+    <svg width="24" height="24" viewBox="0 0 512 512" fill="none">
+        <!-- Bug body -->
+        <ellipse cx="256" cy="330" rx="128" ry="140" fill="#FF9F00"/>
+        <ellipse cx="256" cy="330" rx="96" ry="105" fill="#FF8C00"/>
+        
+        <!-- Bug head -->
+        <circle cx="256" cy="120" r="85" fill="#4A4A4A"/>
+        <circle cx="256" cy="120" r="65" fill="#333333"/>
+        
+        <!-- Antennae -->
+        <ellipse cx="220" cy="45" rx="20" ry="35" fill="#333333" transform="rotate(-15 220 45)"/>
+        <ellipse cx="292" cy="45" rx="20" ry="35" fill="#333333" transform="rotate(15 292 45)"/>
+        
+        <!-- Bug legs -->
+        <rect x="40" y="130" width="60" height="20" fill="#333333" transform="rotate(-30 70 140)"/>
+        <rect x="412" y="130" width="60" height="20" fill="#333333" transform="rotate(30 442 140)"/>
+        <rect x="30" y="200" width="80" height="20" fill="#333333" transform="rotate(-15 70 210)"/>
+        <rect x="402" y="200" width="80" height="20" fill="#333333" transform="rotate(15 442 210)"/>
+        <rect x="20" y="280" width="70" height="20" fill="#333333" transform="rotate(15 55 290)"/>
+        <rect x="422" y="280" width="70" height="20" fill="#333333" transform="rotate(-15 457 290)"/>
+        
+        <!-- Shadow/depth on body -->
+        <ellipse cx="286" cy="340" rx="50" ry="60" fill="#E67E00" opacity="0.6"/>
+    </svg>
+</div>
 
 <div id="gitflow-modal" class="gitflow-modal" onclick="gitflowCloseModal()">
     <div class="gitflow-modal-content" onclick="event.stopPropagation()">
