@@ -324,7 +324,9 @@
                 <div class="gitflow-context-item">User: {{ auth()->user()->name }}</div>
                 <div class="gitflow-context-item">Page: <span id="current-path"></span></div>
                 <div class="gitflow-context-item">Browser: <span id="browser-info"></span></div>
+                @if(config('gitflow-reporter.features.screenshots', true))
                 <div class="gitflow-context-item">Screenshot: Current page capture</div>
+                @endif
                 <div class="gitflow-context-item">Timestamp: <span id="timestamp"></span></div>
             </div>
             
@@ -389,7 +391,8 @@ async function gitflowSubmitReport(event) {
     // Add priority
     formData.append('priority', 'medium');
     
-    // Always capture screenshot
+    // Capture screenshot if enabled
+    @if(config('gitflow-reporter.features.screenshots', true))
     try {
         const screenshot = await captureScreenshot();
         if (screenshot) {
@@ -399,6 +402,7 @@ async function gitflowSubmitReport(event) {
     } catch (error) {
         console.warn('Screenshot capture failed:', error);
     }
+    @endif
     
     try {
         // Get CSRF token

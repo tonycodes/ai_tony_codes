@@ -38,7 +38,7 @@ return [
     |--------------------------------------------------------------------------
     */
     'features' => [
-        'screenshots' => env('GITFLOW_REPORTER_SCREENSHOTS', true),
+        'screenshots' => env('GITFLOW_REPORTER_SCREENSHOTS', true), // Set to false for sites with sensitive content
         'context_collection' => env('GITFLOW_REPORTER_CONTEXT', true),
         'priority_selection' => env('GITFLOW_REPORTER_PRIORITY', true),
         'file_attachments' => env('GITFLOW_REPORTER_ATTACHMENTS', false),
