@@ -25,7 +25,7 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-#gitflow-reporter-hover-area:hover + #gitflow-reporter-bug {
+#gitflow-reporter-bug.show {
     opacity: 1 !important;
     transform: scale(1) !important;
 }
@@ -37,19 +37,6 @@
     border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
-/* Hover detection area */
-#gitflow-reporter-hover-area {
-    position: fixed !important;
-    {{ config('gitflow-reporter.ui.position') === 'top-left' ? 'top: 0 !important; left: 0 !important;' : '' }}
-    {{ config('gitflow-reporter.ui.position') === 'top-right' ? 'top: 0 !important; right: 0 !important;' : '' }}
-    {{ config('gitflow-reporter.ui.position') === 'bottom-left' ? 'bottom: 0 !important; left: 0 !important;' : '' }}
-    {{ config('gitflow-reporter.ui.position', 'bottom-right') === 'bottom-right' ? 'bottom: 0 !important; right: 0 !important;' : '' }}
-    width: 80px !important;
-    height: 80px !important;
-    z-index: 999998 !important;
-    background: transparent !important;
-    cursor: pointer !important;
-}
 
 .gitflow-modal {
     position: fixed !important;
@@ -289,9 +276,6 @@
 @auth
 @if(!app()->environment(['production', 'prod']) || config('gitflow-reporter.ui.show_in_development'))
 
-<!-- Hover detection area -->
-<div id="gitflow-reporter-hover-area"></div>
-
 <!-- Bug button -->
 <div id="gitflow-reporter-bug" onclick="gitflowOpenModal()">🐛</div>
 
@@ -469,6 +453,43 @@ document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         gitflowCloseModal();
     }
+});
+
+// Corner hover detection
+const bugButton = document.getElementById('gitflow-reporter-bug');
+const position = '{{ config('gitflow-reporter.ui.position', 'bottom-right') }}';
+
+let hideTimeout;
+
+document.addEventListener('mousemove', function(e) {
+    const threshold = 80;
+    let isNearCorner = false;
+    
+    if (position === 'top-left') {
+        isNearCorner = e.clientX < threshold && e.clientY < threshold;
+    } else if (position === 'top-right') {
+        isNearCorner = e.clientX > window.innerWidth - threshold && e.clientY < threshold;
+    } else if (position === 'bottom-left') {
+        isNearCorner = e.clientX < threshold && e.clientY > window.innerHeight - threshold;
+    } else { // bottom-right
+        isNearCorner = e.clientX > window.innerWidth - threshold && e.clientY > window.innerHeight - threshold;
+    }
+    
+    if (isNearCorner) {
+        clearTimeout(hideTimeout);
+        bugButton.classList.add('show');
+    } else {
+        clearTimeout(hideTimeout);
+        hideTimeout = setTimeout(() => {
+            bugButton.classList.remove('show');
+        }, 500);
+    }
+});
+
+// Keep visible when hovering the button itself
+bugButton.addEventListener('mouseenter', function() {
+    clearTimeout(hideTimeout);
+    bugButton.classList.add('show');
 });
 
 // Add animations
