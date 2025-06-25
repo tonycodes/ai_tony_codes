@@ -23,9 +23,9 @@
     
     <p><strong>Widget Conditions:</strong></p>
     <ul>
-        <li>Environment check: {{ config('gitflow-reporter.ui.show_in_development') || !app()->environment('local') ? 'PASS' : 'FAIL' }}</li>
+        <li>Environment check: {{ config('gitflow-reporter.ui.show_in_development') || !app()->environment(['production', 'prod']) ? 'PASS (Show outside production)' : 'FAIL' }}</li>
         <li>Auth check: {{ auth()->check() ? 'PASS' : 'FAIL' }}</li>
-        <li>Combined: {{ (config('gitflow-reporter.ui.show_in_development') || !app()->environment('local')) && auth()->check() ? 'SHOULD SHOW' : 'SHOULD HIDE' }}</li>
+        <li>Combined: {{ (config('gitflow-reporter.ui.show_in_development') || !app()->environment(['production', 'prod'])) && auth()->check() ? 'SHOULD SHOW' : 'SHOULD HIDE' }}</li>
     </ul>
 </div>
 

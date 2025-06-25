@@ -29,7 +29,7 @@ return [
         'position' => env('GITFLOW_REPORTER_POSITION', 'bottom-right'), // bottom-right, bottom-left, top-right, top-left
         'theme' => env('GITFLOW_REPORTER_THEME', 'auto'), // light, dark, auto
         'show_to_guests' => env('GITFLOW_REPORTER_SHOW_TO_GUESTS', false),
-        'show_in_development' => env('GITFLOW_REPORTER_SHOW_IN_DEV', true),
+        'show_in_development' => env('GITFLOW_REPORTER_SHOW_IN_DEV', true), // Set to false to hide in all non-production environments
     ],
 
     /*

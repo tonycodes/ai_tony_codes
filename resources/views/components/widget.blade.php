@@ -1,6 +1,6 @@
 {{-- GitFlow Reporter Widget --}}
 <link rel="stylesheet" href="{{ asset('vendor/gitflow-reporter/gitflow-reporter.css') }}">
-@if(config('gitflow-reporter.ui.show_in_development') || !app()->environment('local'))
+@if(config('gitflow-reporter.ui.show_in_development') || !app()->environment(['production', 'prod']))
 @auth
 <div id="gitflow-reporter-widget" 
      x-data="gitflowReporter()" 
