@@ -1,0 +1,73 @@
+{
+    "name": "tonycodes/gitflow-reporter",
+    "description": "Premium Laravel package for automated GitHub issue reporting with rich context and screenshots",
+    "keywords": ["laravel", "github", "error-reporting", "issue-tracker", "bug-reporter", "premium", "feedback", "screenshots"],
+    "homepage": "https://tonycodes.com/gitflow-reporter",
+    "license": "proprietary",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Tony Codes",
+            "email": "tony@tonycodes.com",
+            "homepage": "https://tonycodes.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "support@tonycodes.com",
+        "docs": "https://docs.tonycodes.com/gitflow-reporter",
+        "issues": "https://github.com/tonycodes/gitflow-reporter/issues",
+        "source": "https://github.com/tonycodes/gitflow-reporter"
+    },
+    "funding": [
+        {
+            "type": "other",
+            "url": "https://tonycodes.com/gitflow-reporter"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^10.0|^11.0|^12.0",
+        "illuminate/http": "^10.0|^11.0|^12.0",
+        "illuminate/validation": "^10.0|^11.0|^12.0",
+        "guzzlehttp/guzzle": "^7.0",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0|^9.0",
+        "phpunit/phpunit": "^10.0",
+        "mockery/mockery": "^1.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "TonyCodes\\GitFlowReporter\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TonyCodes\\GitFlowReporter\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TonyCodes\\GitFlowReporter\\GitFlowReporterServiceProvider"
+            ],
+            "aliases": {
+                "GitFlowReporter": "TonyCodes\\GitFlowReporter\\Facades\\GitFlowReporter"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitFlow Reporter - Transform User Feedback into GitHub Issues</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-gray-900">GitFlow Reporter</span>
+                    <span class="ml-2 text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">PREMIUM</span>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-gray-900">Features</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-gray-900">Pricing</a>
+                    <a href="#docs" class="text-gray-600 hover:text-gray-900">Documentation</a>
+                    <a href="#demo" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Live Demo</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-blue-50 to-indigo-100 py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-5xl font-bold text-gray-900 mb-6">
+                    Transform User Feedback into 
+                    <span class="text-blue-600">Actionable GitHub Issues</span>
+                </h1>
+                <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                    GitFlow Reporter eliminates the friction between user-reported problems and developer action by automatically creating detailed GitHub issues with rich context, screenshots, and structured data.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#demo" class="bg-blue-600 text-white px-8 py-3 rounded-md text-lg font-medium hover:bg-blue-700 transition">
+                        Try Live Demo
+                    </a>
+                    <a href="#pricing" class="bg-white text-blue-600 px-8 py-3 rounded-md text-lg font-medium border border-blue-600 hover:bg-blue-50 transition">
+                        View Pricing
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Everything You Need for Better Bug Reporting</h2>
+                <p class="text-lg text-gray-600">Designed specifically for Laravel applications</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">🎯</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">One-Click Reporting</h3>
+                    <p class="text-gray-600">Floating widget allows users to report issues instantly without leaving your application.</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">📸</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Automatic Screenshots</h3>
+                    <p class="text-gray-600">Captures screenshots and rich context automatically to help developers understand issues.</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">🔗</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">GitHub Integration</h3>
+                    <p class="text-gray-600">Creates detailed GitHub issues with all context, labels, and assignees automatically.</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">🛡️</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Secure & Private</h3>
+                    <p class="text-gray-600">Automatic data sanitization removes sensitive information before creating issues.</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">⚡</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Lightning Fast</h3>
+                    <p class="text-gray-600">Minimal JavaScript footprint with lazy loading for optimal performance.</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">🎨</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Fully Customizable</h3>
+                    <p class="text-gray-600">Configurable templates, themes, and permissions to match your workflow.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-lg text-gray-600">Choose the plan that fits your needs</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Starter Plan -->
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Starter</h3>
+                        <div class="text-4xl font-bold text-blue-600 mb-4">$29<span class="text-lg text-gray-600">/month</span></div>
+                        <p class="text-gray-600 mb-6">Perfect for small businesses and freelancers</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Up to 3 sites</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> 500 reports/month</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Screenshot capture</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Basic templates</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Email support</li>
+                    </ul>
+                    <button class="w-full bg-blue-600 text-white py-3 rounded-md font-medium hover:bg-blue-700 transition">
+                        Get Started
+                    </button>
+                </div>
+
+                <!-- Professional Plan -->
+                <div class="bg-white rounded-lg shadow-xl p-8 border-2 border-blue-500 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-medium">POPULAR</span>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Professional</h3>
+                        <div class="text-4xl font-bold text-blue-600 mb-4">$79<span class="text-lg text-gray-600">/month</span></div>
+                        <p class="text-gray-600 mb-6">For growing companies and agencies</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Up to 10 sites</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> 2,000 reports/month</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Priority support</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Custom templates</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Advanced analytics</li>
+                    </ul>
+                    <button class="w-full bg-blue-600 text-white py-3 rounded-md font-medium hover:bg-blue-700 transition">
+                        Start Free Trial
+                    </button>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Enterprise</h3>
+                        <div class="text-4xl font-bold text-blue-600 mb-4">$199<span class="text-lg text-gray-600">/month</span></div>
+                        <p class="text-gray-600 mb-6">For large organizations with unlimited needs</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Unlimited sites</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Unlimited reports</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> White-label options</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Dedicated support</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Custom integrations</li>
+                    </ul>
+                    <button class="w-full bg-gray-900 text-white py-3 rounded-md font-medium hover:bg-gray-800 transition">
+                        Contact Sales
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-blue-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Ready to Transform Your Bug Reporting?</h2>
+            <p class="text-xl text-blue-100 mb-8">Join hundreds of Laravel developers who have streamlined their feedback process</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#demo" class="bg-white text-blue-600 px-8 py-3 rounded-md text-lg font-medium hover:bg-gray-100 transition">
+                    Try Free Demo
+                </a>
+                <a href="mailto:hello@tonycodes.com" class="bg-blue-700 text-white px-8 py-3 rounded-md text-lg font-medium hover:bg-blue-800 transition">
+                    Contact Sales
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">GitFlow Reporter</h3>
+                    <p class="text-gray-400">Premium Laravel package for automated GitHub issue reporting.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3">Product</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#features" class="hover:text-white">Features</a></li>
+                        <li><a href="#pricing" class="hover:text-white">Pricing</a></li>
+                        <li><a href="#docs" class="hover:text-white">Documentation</a></li>
+                        <li><a href="#demo" class="hover:text-white">Demo</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3">Support</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="mailto:support@tonycodes.com" class="hover:text-white">Email Support</a></li>
+                        <li><a href="#" class="hover:text-white">Discord Community</a></li>
+                        <li><a href="#" class="hover:text-white">Knowledge Base</a></li>
+                        <li><a href="#" class="hover:text-white">Status Page</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="https://tonycodes.com" class="hover:text-white">About Tony Codes</a></li>
+                        <li><a href="#" class="hover:text-white">Blog</a></li>
+                        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Tony Codes. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

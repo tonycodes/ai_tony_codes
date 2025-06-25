@@ -1,0 +1,122 @@
+/* GitFlow Reporter Styles */
+.gitflow-reporter-trigger {
+    transition: all 0.2s ease-in-out;
+}
+
+.gitflow-reporter-trigger:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .gitflow-reporter-modal {
+        background-color: #1f2937;
+        color: #f9fafb;
+    }
+    
+    .gitflow-reporter-modal input,
+    .gitflow-reporter-modal textarea,
+    .gitflow-reporter-modal select {
+        background-color: #374151;
+        border-color: #4b5563;
+        color: #f9fafb;
+    }
+    
+    .gitflow-reporter-modal input:focus,
+    .gitflow-reporter-modal textarea:focus,
+    .gitflow-reporter-modal select:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+}
+
+/* Animation classes */
+.gitflow-reporter-fadeIn {
+    animation: gitflow-reporter-fadeIn 0.3s ease-out;
+}
+
+.gitflow-reporter-fadeOut {
+    animation: gitflow-reporter-fadeOut 0.2s ease-in;
+}
+
+@keyframes gitflow-reporter-fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gitflow-reporter-fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+/* Loading spinner */
+.gitflow-reporter-spinner {
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3b82f6;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+    .gitflow-reporter-modal {
+        margin: 1rem;
+        max-height: calc(100vh - 2rem);
+    }
+}
+
+/* Accessibility */
+.gitflow-reporter-trigger:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Success/Error notifications */
+.gitflow-reporter-notification {
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 0.5rem;
+    position: relative;
+    animation: slideInRight 0.3s ease-out;
+}
+
+.gitflow-reporter-notification.success {
+    background-color: #10b981;
+    color: white;
+}
+
+.gitflow-reporter-notification.error {
+    background-color: #ef4444;
+    color: white;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
