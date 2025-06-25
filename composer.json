@@ -2,27 +2,21 @@
     "name": "tonycodes/ai_tony_codes",
     "description": "Premium Laravel package for automated GitHub issue reporting with rich context and screenshots",
     "keywords": ["laravel", "github", "error-reporting", "issue-tracker", "bug-reporter", "premium", "feedback", "screenshots"],
-    "homepage": "https://tonycodes.com/gitflow-reporter",
+    "homepage": "https://tony.codes/gitflow-reporter",
     "license": "proprietary",
     "type": "library",
     "authors": [
         {
             "name": "Tony Codes",
-            "email": "tony@tonycodes.com",
-            "homepage": "https://tonycodes.com",
+            "email": "tony@tony.codes",
+            "homepage": "https://tony.codes",
             "role": "Developer"
         }
     ],
-    "support": {
-        "email": "support@tonycodes.com",
-        "docs": "https://docs.tonycodes.com/gitflow-reporter",
-        "issues": "https://github.com/tonycodes/ai_tony_codes/issues",
-        "source": "https://github.com/tonycodes/ai_tony_codes"
-    },
     "funding": [
         {
             "type": "other",
-            "url": "https://tonycodes.com/gitflow-reporter"
+            "url": "https://tony.codes/gitflow-reporter"
         }
     ],
     "require": {
