@@ -38,7 +38,7 @@ class GitFlowReporterController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'type' => 'required|in:bug,feature,improvement,question,other',
+            'type' => 'required|in:bug,feedback',
             'title' => 'required|string|max:100',
             'description' => 'required|string|max:5000',
             'priority' => 'nullable|in:low,medium,high,urgent',

@@ -284,32 +284,30 @@
         <!-- Header -->
         <div class="gitflow-header">
             <h3>
-                Report an Issue
+                Send Feedback
                 <button type="button" class="gitflow-close" onclick="gitflowCloseModal()">
                     <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
                 </button>
             </h3>
-            <p>Help us improve by reporting bugs, requesting features, or asking questions.</p>
+            <p>Help us improve by reporting bugs or sharing your feedback.</p>
         </div>
         
         <!-- Form -->
         <form id="gitflow-form" onsubmit="gitflowSubmitReport(event)" class="gitflow-form">
             <div class="gitflow-form-group">
-                <label>Issue Type</label>
+                <label>Report Type</label>
                 <select name="type" required>
-                    <option value="">Select issue type</option>
+                    <option value="">Select report type</option>
                     <option value="bug">🐛 Bug Report</option>
-                    <option value="feature">✨ Feature Request</option>
-                    <option value="improvement">🔧 Improvement</option>
-                    <option value="question">❓ Question</option>
+                    <option value="feedback">💬 Feedback</option>
                 </select>
             </div>
             
             <div class="gitflow-form-group">
                 <label>Title</label>
-                <input type="text" name="title" placeholder="Brief description of the issue" required maxlength="100">
+                <input type="text" name="title" placeholder="Brief description" required maxlength="100">
             </div>
             
             <div class="gitflow-form-group">

@@ -55,19 +55,9 @@ return [
             'labels' => ['bug', 'auto-generated'],
             'assignees' => [],
         ],
-        'feature' => [
-            'title_prefix' => '✨',
-            'labels' => ['enhancement', 'auto-generated'],
-            'assignees' => [],
-        ],
-        'improvement' => [
-            'title_prefix' => '🔧',
-            'labels' => ['enhancement', 'improvement', 'auto-generated'],
-            'assignees' => [],
-        ],
-        'question' => [
-            'title_prefix' => '❓',
-            'labels' => ['question', 'auto-generated'],
+        'feedback' => [
+            'title_prefix' => '💬',
+            'labels' => ['feedback', 'auto-generated'],
             'assignees' => [],
         ],
     ],
