@@ -186,7 +186,16 @@ function gitflowReporter() {
     return {
         showModal: false,
         submitting: false,
-        config: {},
+        config: {
+            features: {
+                screenshots: true,
+                context_collection: true,
+                priority_selection: true
+            },
+            notifications: {
+                auto_hide_after: 5000
+            }
+        },
         form: {
             type: '',
             title: '',
@@ -201,19 +210,26 @@ function gitflowReporter() {
         },
 
         async init() {
-            // Load configuration
+            // Load configuration from server
             try {
                 const response = await fetch('{{ route("gitflow-reporter.config") }}');
-                this.config = await response.json();
-            } catch (error) {
-                console.warn('Failed to load GitFlow Reporter config:', error);
+                const serverConfig = await response.json();
+                // Merge server config with defaults
                 this.config = {
+                    ...this.config,
+                    ...serverConfig,
                     features: {
-                        screenshots: true,
-                        context_collection: true,
-                        priority_selection: true
+                        ...this.config.features,
+                        ...(serverConfig.features || {})
+                    },
+                    notifications: {
+                        ...this.config.notifications,
+                        ...(serverConfig.notifications || {})
                     }
                 };
+            } catch (error) {
+                console.warn('Failed to load GitFlow Reporter config:', error);
+                // Keep default config that was already set
             }
         },
 
