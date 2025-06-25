@@ -20,7 +20,20 @@
     <p><strong>CSS File Exists:</strong> 
         {{ file_exists(public_path('vendor/gitflow-reporter/gitflow-reporter.css')) ? 'YES' : 'NO' }}
     </p>
+    
+    <p><strong>Widget Conditions:</strong></p>
+    <ul>
+        <li>Environment check: {{ config('gitflow-reporter.ui.show_in_development') || !app()->environment('local') ? 'PASS' : 'FAIL' }}</li>
+        <li>Auth check: {{ auth()->check() ? 'PASS' : 'FAIL' }}</li>
+        <li>Combined: {{ (config('gitflow-reporter.ui.show_in_development') || !app()->environment('local')) && auth()->check() ? 'SHOULD SHOW' : 'SHOULD HIDE' }}</li>
+    </ul>
 </div>
 
 {{-- Include the actual widget --}}
+<div style="background: blue; color: white; padding: 5px;">
+    <p>About to include widget...</p>
+</div>
 @include('gitflow-reporter::components.widget')
+<div style="background: green; color: white; padding: 5px;">
+    <p>Widget included!</p>
+</div>
