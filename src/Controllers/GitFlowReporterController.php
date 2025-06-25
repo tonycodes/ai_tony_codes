@@ -157,6 +157,13 @@ class GitFlowReporterController extends Controller
     protected function checkRateLimit(Request $request): bool
     {
         $limit = config('gitflow-reporter.security.rate_limit', 5);
+        $duration = config('gitflow-reporter.security.rate_limit_duration', 3600);
+        
+        // If rate limit is 0, no limit is enforced
+        if ($limit <= 0) {
+            return true;
+        }
+        
         $key = 'gitflow-reporter:rate-limit:' . ($request->user()?->id ?? $request->ip());
         
         $cache = app('cache');
@@ -166,7 +173,7 @@ class GitFlowReporterController extends Controller
             return false;
         }
         
-        $cache->put($key, $attempts + 1, now()->addHour());
+        $cache->put($key, $attempts + 1, now()->addSeconds($duration));
         return true;
     }
 

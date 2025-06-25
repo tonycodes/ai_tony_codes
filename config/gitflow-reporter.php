@@ -72,7 +72,8 @@ return [
         'allowed_file_types' => ['png', 'jpg', 'jpeg', 'gif', 'webp'],
         'sanitize_data' => true,
         'exclude_sensitive_data' => true,
-        'rate_limit' => env('GITFLOW_REPORTER_RATE_LIMIT', 5), // per hour per user
+        'rate_limit' => env('GITFLOW_REPORTER_RATE_LIMIT', 5), // Reports per hour per user (0 = no limit)
+        'rate_limit_duration' => env('GITFLOW_REPORTER_RATE_DURATION', 3600), // Duration in seconds (default: 1 hour)
     ],
 
     /*
