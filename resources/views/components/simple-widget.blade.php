@@ -16,14 +16,14 @@
     z-index: 999999 !important;
     width: 44px !important;
     height: 44px !important;
-    background: rgba(255, 255, 255, 0.9) !important;
+    background: rgba(30, 30, 30, 0.95) !important;
     border-radius: 12px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     cursor: pointer !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
-    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(10px) !important;
     opacity: 0 !important;
     transform: scale(0.8) !important;
@@ -36,10 +36,10 @@
 }
 
 #gitflow-reporter-bug:hover {
-    background: rgba(255, 255, 255, 1) !important;
+    background: rgba(45, 45, 45, 1) !important;
     transform: scale(1.05) !important;
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2) !important;
-    border-color: rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
 }
 
 
