@@ -38,11 +38,11 @@ Transform your application's user feedback into actionable GitHub issues automat
 ## 🚀 Installation
 
 ### 1. Purchase License
-Visit [https://tonycodes.com/gitflow-reporter](https://tonycodes.com/gitflow-reporter) to purchase your license.
+Visit [https://tony.codes/gitflow-reporter](https://tony.codes/gitflow-reporter) to purchase your license.
 
 ### 2. Install Package
 ```bash
-composer require tonycodes/gitflow-reporter
+composer require tonycodes/ai_tony_codes
 ```
 
 ### 3. Publish Configuration
@@ -65,6 +65,7 @@ GITFLOW_REPORTER_GITHUB_REPO=your-repository-name
 GITFLOW_REPORTER_POSITION=bottom-right
 GITFLOW_REPORTER_THEME=auto
 GITFLOW_REPORTER_SHOW_TO_GUESTS=false
+GITFLOW_REPORTER_SCREENSHOTS=true  # Set to false for sensitive sites
 ```
 
 ### 5. Add Widget to Layout
@@ -82,7 +83,7 @@ Add to your main layout file (e.g., `app.blade.php`):
 Once installed, the widget automatically appears for authenticated users. Users can:
 
 1. Click the floating report button
-2. Select issue type (Bug, Feature, Improvement, Question)
+2. Select issue type (Technical Issue/Bug, Feature Suggestion)
 3. Fill in title and description
 4. Optionally include a screenshot
 5. Submit the report
@@ -196,13 +197,12 @@ Automatically removes:
 
 ### Automatic Updates
 ```bash
-composer update tonycodes/gitflow-reporter
+composer update tonycodes/ai_tony_codes
 ```
 
 ### Support Channels
-- 📧 Email: support@tonycodes.com
-- 💬 Discord: [GitFlow Reporter Community](https://discord.gg/gitflow)
-- 📖 Documentation: [docs.tonycodes.com/gitflow-reporter](https://docs.tonycodes.com/gitflow-reporter)
+- 📧 Email: support@tony.codes
+- 📖 Documentation: See this GitHub repository README
 
 ## 📝 Changelog
 
@@ -218,7 +218,7 @@ composer update tonycodes/gitflow-reporter
 
 This is a proprietary commercial package. Each license permits use on a specific number of domains as per your subscription plan.
 
-**License Agreement**: [https://tonycodes.com/gitflow-reporter/license](https://tonycodes.com/gitflow-reporter/license)
+**License Agreement**: [https://tony.codes/gitflow-reporter/license](https://tony.codes/gitflow-reporter/license)
 
 ## 🤝 Contributing
 
@@ -228,6 +228,6 @@ We welcome feedback and suggestions! However, as this is a commercial package, c
 
 ---
 
-**Made with ❤️ by [Tony Codes](https://tonycodes.com)**
+**Made with ❤️ by [Tony Codes](https://tony.codes)**
 
 *Transform your Laravel app's feedback system today with GitFlow Reporter.*
